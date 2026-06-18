@@ -1,26 +1,22 @@
-<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์ - อัฟฮัม อินทโช</title>
-    <!-- นำเข้าฟอนต์ Kanit เพื่อความโมเดิร์นตามเทรนด์ไทย -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- นำเข้าชุดไอคอน Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* กำหนดตัวแปรชุดสีม่วงพรีเมียมและพาสเทล */
         :root {
-            --primary-purple: #7c3aed;    /* สีม่วงหลัก */
-            --dark-purple: #5b21b6;       /* สีม่วงเข้ม */
-            --medium-purple: #a78bfa;     /* สีม่วงสว่าง */
-            --accent-purple: #c084fc;     /* สีม่วงอัญมณี */
-            --light-purple: #f5f3ff;      /* สีม่วงพาสเทลอ่อน */
-            --text-dark: #1e1b4b;         /* สีข้อความเข้ม */
-            --text-muted: #6b7280;        /* สีข้อความรอง */
+            --primary-purple: #7c3aed;    
+            --dark-purple: #5b21b6;       
+            --medium-purple: #a78bfa;     
+            --accent-purple: #c084fc;     
+            --light-purple: #f5f3ff;      
+            --text-dark: #1e1b4b;         
+            --text-muted: #6b7280;        
         }
 
         * {
@@ -34,6 +30,7 @@
             background-color: #f5f3ff;
             background: linear-gradient(135deg, #f5f3ff 0%, #edd9ff 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -42,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* ตกแต่งพื้นหลังด้วย Gradient Blobs เพื่อมิติทางสายตา */
         .bg-blob {
             position: absolute;
             border-radius: 50%;
@@ -67,7 +63,6 @@
             background: var(--accent-purple);
         }
 
-        /* การ์ดโปรไฟล์สไตล์กระจกเงา (Glassmorphism) */
         .profile-container {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
@@ -88,7 +83,6 @@
             box-shadow: 0 25px 50px rgba(124, 58, 237, 0.18);
         }
 
-        /* ส่วนจัดวางภาพโปรไฟล์และการคลิกอัปโหลด */
         .avatar-area {
             position: relative;
             width: 140px;
@@ -107,22 +101,40 @@
             display: block;
         }
 
-        /* แสดงแทนเมื่อยังไม่มีการโหลดรูปภาพ */
         .avatar-fallback {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--medium-purple), var(--primary-purple));
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 50px;
             border: 4px solid white;
             box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+            animation: pulse-border 2s infinite;
         }
 
-        /* ตกแต่งปุ่มกล้องเล็กๆ ด้านล่างภาพ เพื่อบ่งบอกว่าคลิกเปลี่ยนรูปได้ */
+        .avatar-fallback i {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .avatar-fallback span {
+            font-size: 11px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+        }
+
         .camera-badge {
             position: absolute;
             bottom: 5px;
@@ -145,7 +157,6 @@
             transform: scale(1.15);
         }
 
-        /* ข้อมูลหัวเรื่องโปรไฟล์ */
         .name {
             font-size: 24px;
             font-weight: 600;
@@ -165,7 +176,6 @@
             margin-bottom: 25px;
         }
 
-        /* รายละเอียดข้อมูล */
         .info-list {
             text-align: left;
             margin-bottom: 25px;
@@ -237,10 +247,10 @@
             text-decoration: underline;
         }
 
-        /* ปุ่มป้อนข้อมูลติดต่อ */
         .button-group {
             display: grid;
             grid-template-columns: 1fr;
+            margin-bottom: 15px;
         }
 
         .action-btn {
@@ -269,23 +279,56 @@
             box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
             transform: translateY(-2px);
         }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 12px;
+            padding: 15px;
+            width: 100%;
+            max-width: 430px;
+            margin-top: 20px;
+            z-index: 1;
+            font-size: 13px;
+            color: var(--text-dark);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .instruction-box p {
+            margin-bottom: 5px;
+        }
+
+        .instruction-box ol {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .instruction-box li {
+            margin-bottom: 3px;
+        }
+
+        .highlight-text {
+            color: var(--primary-purple);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <!-- พื้นหลังวงกลมสีม่วงพาสเทลเพื่อความนุ่มละมุนสายตา -->
+    <!-- Background decoration blobs -->
     <div class="bg-blob blob-1"></div>
     <div class="bg-blob blob-2"></div>
 
     <div class="profile-container">
         
-        <!-- รูปโปรไฟล์ พร้อมระบบอัปโหลดทดลองสด และตัวสำรอง (Fallback) -->
-        <!-- คลิกที่พื้นที่ตรงนี้เพื่อทดลองเลือกไฟล์รูปในเครื่องขึ้นมาดูได้ทันทีครับ! -->
+        <!-- Profile Image & Fallback mechanism -->
         <div class="avatar-area" onclick="document.getElementById('image-uploader').click();" title="คลิกเพื่อเลือกรูปภาพของคุณ">
-            <img src="f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg" alt="คุณอัฟฮัม อินทโช" class="profile-img" id="avatar-img" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='flex';">
+            <img src="f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg" alt="คุณอัฟฮัม อินทโช" class="profile-img" id="avatar-img" onerror="handleImageError();">
             
             <div class="avatar-fallback" id="fallback-icon" style="display: none;">
-                <i class="fa-solid fa-user-graduate"></i>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>คลิกเพื่อใส่รูป</span>
             </div>
             
             <div class="camera-badge">
@@ -293,14 +336,13 @@
             </div>
         </div>
 
-        <!-- ตัวอัปโหลดไฟล์ซ่อนอยู่ เพื่อความสะอาดของหน้าเว็บ -->
+        <!-- Hidden file uploader for live previewing -->
         <input type="file" id="image-uploader" accept="image/*" style="display: none;">
 
-        <!-- ข้อมูลหัวกระดาษ -->
+        <!-- Header information -->
         <h1 class="name">คุณอัฟฮัม อินทโช</h1>
         <div class="student-id-badge">รหัสนักศึกษา: 694245015</div>
 
-        <!-- รายการข้อมูลนักศึกษา -->
         <div class="info-list">
             
             <div class="info-card">
@@ -339,14 +381,13 @@
                 </div>
                 <div class="text-box">
                     <span class="info-label">อีเมล</span>
-                    <!-- แก้ไขเติมอีเมลของคุณจริงใน href และใน text ได้ตามต้องการครับ -->
                     <span class="info-value"><a href="mailto:afham.i@mcru.ac.th">afham.i@mcru.ac.th</a></span>
                 </div>
             </div>
 
         </div>
 
-        <!-- ปุ่มโทรติดต่อฉุกเฉินด่วน -->
+        <!-- Call Action Button -->
         <div class="button-group">
             <a href="tel:0986979273" class="action-btn">
                 <i class="fa-solid fa-phone-volume"></i> โทรติดต่อฉันตอนนี้
@@ -355,21 +396,37 @@
 
     </div>
 
-    <!-- ส่วน Script ระบบดักจับการเลือกไฟล์รูปและนำมาจำลองการแสดงผลสดทันที -->
+    <!-- Help instruction box -->
+    <div class="instruction-box" id="guide-box">
+        <p>💡 <span class="highlight-text">หากรูปภาพด้านบนไม่ยอมแสดงผล:</span></p>
+        <ol>
+            <li><strong>วิธีที่ง่ายที่สุด:</strong> <span class="highlight-text">คลิกที่วงกลมรูปโปรไฟล์ด้านบน</span> แล้วเลือกไฟล์รูป <code style="background:#eee; padding:1px 4px; border-radius:4px;">f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg</code> จากเครื่องของคุณ รูปจะปรากฏทันที!</li>
+            <li><strong>หากใช้งานในเครื่องคอมพิวเตอร์ของคุณ:</strong> ตรวจสอบให้แน่ใจว่าไฟล์รูปภาพถูกเซฟไว้ใน <strong>"โฟลเดอร์เดียวกัน"</strong> กับไฟล์ <code style="background:#eee; padding:1px 4px; border-radius:4px;">index.html</code> นี้นะครับ</li>
+        </ol>
+    </div>
+
     <script>
         const uploader = document.getElementById('image-uploader');
         const avatarImg = document.getElementById('avatar-img');
         const fallbackIcon = document.getElementById('fallback-icon');
+        const guideBox = document.getElementById('guide-box');
 
+        // Handles initial image load failure gracefully
+        function handleImageError() {
+            avatarImg.style.display = 'none';
+            fallbackIcon.style.display = 'flex';
+            guideBox.style.display = 'block'; 
+        }
+
+        // Handles client-side live image upload previewing
         uploader.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    // นำข้อมูลรูปที่อัปโหลดมาใส่ใน src
                     avatarImg.src = event.target.result;
-                    avatarImg.style.display = 'block'; // แสดงรูปภาพ
-                    fallbackIcon.style.display = 'none'; // ซ่อนไอคอนหมวกปริญญาสำรอง
+                    avatarImg.style.display = 'block'; 
+                    fallbackIcon.style.display = 'none'; 
                 }
                 reader.readAsDataURL(file);
             }
@@ -378,5 +435,3 @@
 
 </body>
 </html>
-```
-eof
