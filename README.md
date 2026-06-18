@@ -85,10 +85,9 @@
 
         .avatar-area {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 25px auto;
-            cursor: pointer;
         }
 
         .profile-img {
@@ -96,65 +95,9 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.25);
             display: block;
-        }
-
-        .avatar-fallback {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--medium-purple), var(--primary-purple));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
-            animation: pulse-border 2s infinite;
-        }
-
-        .avatar-fallback i {
-            font-size: 40px;
-            margin-bottom: 5px;
-        }
-
-        .avatar-fallback span {
-            font-size: 11px;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
-        }
-
-        .camera-badge {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background: var(--primary-purple);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
-            transition: transform 0.2s ease;
-        }
-
-        .avatar-area:hover .camera-badge {
-            transform: scale(1.15);
         }
 
         .name {
@@ -250,7 +193,6 @@
         .button-group {
             display: grid;
             grid-template-columns: 1fr;
-            margin-bottom: 15px;
         }
 
         .action-btn {
@@ -279,39 +221,6 @@
             box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
             transform: translateY(-2px);
         }
-
-        .instruction-box {
-            background: rgba(255, 255, 255, 0.9);
-            border-left: 4px solid var(--primary-purple);
-            border-radius: 12px;
-            padding: 15px;
-            width: 100%;
-            max-width: 430px;
-            margin-top: 20px;
-            z-index: 1;
-            font-size: 13px;
-            color: var(--text-dark);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            text-align: left;
-        }
-
-        .instruction-box p {
-            margin-bottom: 5px;
-        }
-
-        .instruction-box ol {
-            padding-left: 20px;
-            color: var(--text-muted);
-        }
-
-        .instruction-box li {
-            margin-bottom: 3px;
-        }
-
-        .highlight-text {
-            color: var(--primary-purple);
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -322,22 +231,10 @@
 
     <div class="profile-container">
         
-        <!-- Profile Image & Fallback mechanism -->
-        <div class="avatar-area" onclick="document.getElementById('image-uploader').click();" title="คลิกเพื่อเลือกรูปภาพของคุณ">
-            <img src="f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg" alt="คุณอัฟฮัม อินทโช" class="profile-img" id="avatar-img" onerror="handleImageError();">
-            
-            <div class="avatar-fallback" id="fallback-icon" style="display: none;">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>คลิกเพื่อใส่รูป</span>
-            </div>
-            
-            <div class="camera-badge">
-                <i class="fa-solid fa-camera"></i>
-            </div>
+        <!-- Profile Image directly loaded from f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg -->
+        <div class="avatar-area">
+            <img src="f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg" alt="คุณอัฟฮัม อินทโช" class="profile-img">
         </div>
-
-        <!-- Hidden file uploader for live previewing -->
-        <input type="file" id="image-uploader" accept="image/*" style="display: none;">
 
         <!-- Header information -->
         <h1 class="name">คุณอัฟฮัม อินทโช</h1>
@@ -381,7 +278,7 @@
                 </div>
                 <div class="text-box">
                     <span class="info-label">อีเมล</span>
-                    <span class="info-value"><a href="mailto:afham.i@mcru.ac.th">afham.i@mcru.ac.th</a></span>
+                    <span class="info-value"><a href="mailto:xafhamxinthcho@gmail.com">xafhamxinthcho@gmail.com</a></span>
                 </div>
             </div>
 
@@ -395,43 +292,6 @@
         </div>
 
     </div>
-
-    <!-- Help instruction box -->
-    <div class="instruction-box" id="guide-box">
-        <p>💡 <span class="highlight-text">หากรูปภาพด้านบนไม่ยอมแสดงผล:</span></p>
-        <ol>
-            <li><strong>วิธีที่ง่ายที่สุด:</strong> <span class="highlight-text">คลิกที่วงกลมรูปโปรไฟล์ด้านบน</span> แล้วเลือกไฟล์รูป <code style="background:#eee; padding:1px 4px; border-radius:4px;">f15e75df-5cc0-4133-9c0f-ff1cedd104ec.jpg</code> จากเครื่องของคุณ รูปจะปรากฏทันที!</li>
-            <li><strong>หากใช้งานในเครื่องคอมพิวเตอร์ของคุณ:</strong> ตรวจสอบให้แน่ใจว่าไฟล์รูปภาพถูกเซฟไว้ใน <strong>"โฟลเดอร์เดียวกัน"</strong> กับไฟล์ <code style="background:#eee; padding:1px 4px; border-radius:4px;">index.html</code> นี้นะครับ</li>
-        </ol>
-    </div>
-
-    <script>
-        const uploader = document.getElementById('image-uploader');
-        const avatarImg = document.getElementById('avatar-img');
-        const fallbackIcon = document.getElementById('fallback-icon');
-        const guideBox = document.getElementById('guide-box');
-
-        // Handles initial image load failure gracefully
-        function handleImageError() {
-            avatarImg.style.display = 'none';
-            fallbackIcon.style.display = 'flex';
-            guideBox.style.display = 'block'; 
-        }
-
-        // Handles client-side live image upload previewing
-        uploader.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    avatarImg.src = event.target.result;
-                    avatarImg.style.display = 'block'; 
-                    fallbackIcon.style.display = 'none'; 
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
 
 </body>
 </html>
